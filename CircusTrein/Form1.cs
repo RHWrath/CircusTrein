@@ -9,8 +9,8 @@ namespace CircusTrein
             InitializeComponent();
         }
         public List<Animal> AnimalList = new();
-        private List<Trein> TreinenList = new();
-        public Trein NewTrein = new Trein();
+        private List<Wagen> TreinenList = new();
+        public Wagen NewTrein = new Wagen();
 
         private void AddAnimal_Click(object sender, EventArgs e)
         {
@@ -26,22 +26,46 @@ namespace CircusTrein
         {
             if (AnimalList.Count > 0)
             {
+                
+                AnimalList = AnimalList.OrderBy(a => a.Diet).ToList();
                 foreach (Animal NewAnimal in AnimalList)
                 {
                     NewTrein.WagenCurrentCapiciteit = NewTrein.WagenCurrentCapiciteit + NewAnimal.Punten;
-
-                    if (NewTrein.WagenMaxCapiciteit >= NewTrein.WagenCurrentCapiciteit)
-                    {
-                        NewTrein.WagenCurrentCapiciteit = NewTrein.WagenCurrentCapiciteit + NewAnimal.Punten;
-                        WagensTxt.Text = NewTrein.AantalWagens.ToString();                        
-                    }
-                    else
+                    if (NewAnimal.Diet == "Carnievoor" && NewAnimal.Punten == 5)
                     {
                         NewTrein.AantalWagens++;
-                        NewTrein.WagenCurrentCapiciteit = NewAnimal.Punten;
-                        WagensTxt.Text = NewTrein.AantalWagens.ToString();                     
-
+                        WagensTxt.Text = NewTrein.AantalWagens.ToString();
                     }
+                    else if (NewAnimal.Diet == "Carnievoor" && NewAnimal.Punten == 3)
+                    {              
+                        
+                            
+                        
+                        
+                    } 
+                    else
+                    {
+                        if (NewTrein.AantalWagens == 0)
+                        {
+                            NewTrein.AantalWagens++;
+                        }
+
+                        if (NewTrein.WagenMaxCapiciteit >= NewTrein.WagenCurrentCapiciteit)
+                        {
+                            NewTrein.WagenCurrentCapiciteit = NewTrein.WagenCurrentCapiciteit + NewAnimal.Punten;
+                            WagensTxt.Text = NewTrein.AantalWagens.ToString();
+                        }
+                        else
+                        {
+                            NewTrein.AantalWagens++;
+                            NewTrein.WagenCurrentCapiciteit = NewAnimal.Punten;
+                            WagensTxt.Text = NewTrein.AantalWagens.ToString();
+                        }
+                    }
+
+
+
+                   
                 }
             }
             else
@@ -50,7 +74,7 @@ namespace CircusTrein
 
         private void ClearWagon_Click(object sender, EventArgs e)
         {
-            NewTrein.AantalWagens = 1;
+            NewTrein.AantalWagens = 0;
             WagensTxt.Text= "";
         }
 
@@ -58,6 +82,7 @@ namespace CircusTrein
         {
             AnimalList.Clear();
             AnimalListTxt.Text = "";
+           
         }
     }
 }

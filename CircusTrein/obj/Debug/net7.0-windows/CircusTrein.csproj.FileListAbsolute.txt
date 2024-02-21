@@ -14,3 +14,4 @@ C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7
 C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\CircusTrein.pdb
 C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\CircusTrein.genruntimeconfig.cache
 C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\ref\CircusTrein.dll
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\CircusTrein.sourcelink.json

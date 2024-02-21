@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace CircusTrein.Classes
 {
-    public class Trein
+    public class Wagen
     {
 
         public int WagenMaxCapiciteit;
         public int AantalWagens;
         public int WagenCurrentCapiciteit;
 
-        public Trein()
+        public Wagen()
         {
             WagenMaxCapiciteit = 10;
-            AantalWagens = 1;
+            AantalWagens = 0;
             WagenCurrentCapiciteit = 0;
         }
     }
