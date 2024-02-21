@@ -1,0 +1,16 @@
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\bin\Debug\net7.0-windows\CircusTrein.exe
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\bin\Debug\net7.0-windows\CircusTrein.deps.json
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\bin\Debug\net7.0-windows\CircusTrein.runtimeconfig.json
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\bin\Debug\net7.0-windows\CircusTrein.dll
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\bin\Debug\net7.0-windows\CircusTrein.pdb
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\CircusTrein.Form1.resources
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\CircusTrein.csproj.GenerateResource.cache
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\CircusTrein.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\CircusTrein.AssemblyInfoInputs.cache
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\CircusTrein.AssemblyInfo.cs
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\CircusTrein.csproj.CoreCompileInputs.cache
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\CircusTrein.dll
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\refint\CircusTrein.dll
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\CircusTrein.pdb
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\CircusTrein.genruntimeconfig.cache
+C:\Users\Rik Heerholtz\Desktop\Fonty's\S2\CircusTrein\CircusTrein\obj\Debug\net7.0-windows\ref\CircusTrein.dll
