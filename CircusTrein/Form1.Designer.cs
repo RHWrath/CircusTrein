@@ -39,7 +39,7 @@
             CalculateAnimal = new Button();
             WagensTxt = new TextBox();
             label3 = new Label();
-            ClearButton = new Button();
+            ClearAnimalListButton = new Button();
             ClearWagon = new Button();
             SuspendLayout();
             // 
@@ -65,7 +65,6 @@
             // 
             comboBoxSize.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxSize.FormattingEnabled = true;
-            comboBoxSize.Items.AddRange(new object[] { "Smoll", "Medium", "Large" });
             comboBoxSize.Location = new Point(54, 38);
             comboBoxSize.Name = "comboBoxSize";
             comboBoxSize.Size = new Size(151, 28);
@@ -84,7 +83,6 @@
             // 
             comboBoxDiet.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxDiet.FormattingEnabled = true;
-            comboBoxDiet.Items.AddRange(new object[] { "Carnievoor", "Herbivoor" });
             comboBoxDiet.Location = new Point(54, 83);
             comboBoxDiet.Name = "comboBoxDiet";
             comboBoxDiet.Size = new Size(151, 28);
@@ -145,15 +143,15 @@
             label3.TabIndex = 10;
             label3.Text = "Aantal wagonen";
             // 
-            // ClearButton
+            // ClearAnimalListButton
             // 
-            ClearButton.Location = new Point(564, 258);
-            ClearButton.Name = "ClearButton";
-            ClearButton.Size = new Size(94, 29);
-            ClearButton.TabIndex = 11;
-            ClearButton.Text = "Clear";
-            ClearButton.UseVisualStyleBackColor = true;
-            ClearButton.Click += ClearButton_Click;
+            ClearAnimalListButton.Location = new Point(564, 258);
+            ClearAnimalListButton.Name = "ClearAnimalListButton";
+            ClearAnimalListButton.Size = new Size(94, 29);
+            ClearAnimalListButton.TabIndex = 11;
+            ClearAnimalListButton.Text = "Clear";
+            ClearAnimalListButton.UseVisualStyleBackColor = true;
+            ClearAnimalListButton.Click += ClearAnimalListButton_Click;
             // 
             // ClearWagon
             // 
@@ -171,7 +169,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(915, 450);
             Controls.Add(ClearWagon);
-            Controls.Add(ClearButton);
+            Controls.Add(ClearAnimalListButton);
             Controls.Add(label3);
             Controls.Add(WagensTxt);
             Controls.Add(CalculateAnimal);
@@ -185,6 +183,7 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -202,7 +201,7 @@
         private Button CalculateAnimal;
         private TextBox WagensTxt;
         private Label label3;
-        private Button ClearButton;
+        private Button ClearAnimalListButton;
         private Button ClearWagon;
     }
 }

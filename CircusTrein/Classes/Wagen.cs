@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CircusTrein.Classes
 {
@@ -10,14 +11,28 @@ namespace CircusTrein.Classes
     {
 
         public int WagenMaxCapiciteit;
-        public int AantalWagens;
         public int WagenCurrentCapiciteit;
+        public bool CarnivorePresent;
+        public int CarnivoreSize;
+        public int SmallestHerbivoreSize;
 
         public Wagen()
         {
             WagenMaxCapiciteit = 10;
-            AantalWagens = 0;
             WagenCurrentCapiciteit = 0;
+            CarnivorePresent = false;
         }
+        public bool RoomInWagon(Animal animal)
+        {
+            if (WagenCurrentCapiciteit + (int)animal.SizePoints < WagenMaxCapiciteit)
+            {
+                return true;
+            }
+            return false;
+        }
+        
+
+
+
     }
 }

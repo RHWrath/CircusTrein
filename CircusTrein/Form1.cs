@@ -4,19 +4,27 @@ namespace CircusTrein
 {
     public partial class Form1 : Form
     {
+        public List<Animal> animals;
+        public Train Train = new Train();
+        private bool SuccesFullyAdded = false;
         public Form1()
         {
             InitializeComponent();
         }
-        public List<Animal> AnimalList = new();
-        private List<Wagen> TreinenList = new();
-        public Wagen NewTrein = new Wagen();
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            FillUIElement();
+            animals = new();
+        }
+
 
         private void AddAnimal_Click(object sender, EventArgs e)
         {
-            Animal NewAnimal = new Animal(comboBoxSize.SelectedItem.ToString(), comboBoxDiet.SelectedItem.ToString());
-            AnimalList.Add(NewAnimal);
-            AnimalListTxt.Text += comboBoxSize.SelectedItem.ToString() + " " + NewAnimal.Punten + " " + NewAnimal.Diet + Environment.NewLine;
+            Animal NewAnimal = new Animal((CustomEnum.SizePoints)comboBoxSize.SelectedItem, (CustomEnum.Diet)comboBoxDiet.SelectedItem);
+            animals.Add(NewAnimal);
+            AnimalListTxt.Text +=  NewAnimal.SizePoints + " - " + NewAnimal.Diet + Environment.NewLine;
 
         }
 
@@ -24,65 +32,109 @@ namespace CircusTrein
 
         private void CalculateAnimal_Click(object sender, EventArgs e)
         {
-            if (AnimalList.Count > 0)
+            animals = animals.OrderByDescending(o => (int)o.SizePoints).ToList();
+            
+            foreach (var animal in animals)
             {
-                
-                AnimalList = AnimalList.OrderBy(a => a.Diet).ToList();
-                foreach (Animal NewAnimal in AnimalList)
+                SuccesFullyAdded = false;
+                if (Train.AantalWagens == 0)
                 {
-                    NewTrein.WagenCurrentCapiciteit = NewTrein.WagenCurrentCapiciteit + NewAnimal.Punten;
-                    if (NewAnimal.Diet == "Carnievoor" && NewAnimal.Punten == 5)
+                    Train.CreateWagon(animal);
+                    
+                } else
+                {   
+                    foreach (var wagen in Train.wagons)
                     {
-                        NewTrein.AantalWagens++;
-                        WagensTxt.Text = NewTrein.AantalWagens.ToString();
-                    }
-                    else if (NewAnimal.Diet == "Carnievoor" && NewAnimal.Punten == 3)
-                    {              
-                        
-                            
-                        
-                        
-                    } 
-                    else
-                    {
-                        if (NewTrein.AantalWagens == 0)
+                        if ((int)animal.Diet == 1)
                         {
-                            NewTrein.AantalWagens++;
-                        }
-
-                        if (NewTrein.WagenMaxCapiciteit >= NewTrein.WagenCurrentCapiciteit)
-                        {
-                            NewTrein.WagenCurrentCapiciteit = NewTrein.WagenCurrentCapiciteit + NewAnimal.Punten;
-                            WagensTxt.Text = NewTrein.AantalWagens.ToString();
+                            if (wagen.CarnivorePresent == false && wagen.SmallestHerbivoreSize > (int)animal.SizePoints && wagen.RoomInWagon(animal) == true)
+                            {
+                                wagen.WagenCurrentCapiciteit = +(int)animal.SizePoints;
+                                wagen.CarnivorePresent = true;
+                                wagen.CarnivoreSize = (int)animal.SizePoints;
+                                SuccesFullyAdded = true;
+                                break;
+                            }
                         }
                         else
                         {
-                            NewTrein.AantalWagens++;
-                            NewTrein.WagenCurrentCapiciteit = NewAnimal.Punten;
-                            WagensTxt.Text = NewTrein.AantalWagens.ToString();
+                            if ((int)animal.Diet == 2)
+                            {
+                                if (wagen.RoomInWagon(animal) == true && wagen.CarnivorePresent == false)
+                                {
+                                    wagen.WagenCurrentCapiciteit = +(int)animal.SizePoints;
+                                    if (wagen.SmallestHerbivoreSize >= (int)animal.SizePoints)
+                                    {
+                                        wagen.SmallestHerbivoreSize = (int)animal.SizePoints;
+                                    }
+                                    SuccesFullyAdded = true;
+                                    break;
+                                }
+                                else if (wagen.CarnivorePresent == true && (int)animal.SizePoints > wagen.CarnivoreSize && wagen.RoomInWagon(animal) == true)
+                                {
+                                    wagen.WagenCurrentCapiciteit = +(int)animal.SizePoints;
+                                    if (wagen.SmallestHerbivoreSize >= (int)animal.SizePoints)
+                                    {
+                                        wagen.SmallestHerbivoreSize = (int)animal.SizePoints;
+                                    }
+                                    SuccesFullyAdded = true;
+                                    break;
+                                }
+                            }
+                            if (SuccesFullyAdded == true)
+                            {
+                                break;
+                            }
                         }
                     }
-
-
-
-                   
+                    if (!SuccesFullyAdded)
+                    {
+                        Train.CreateWagon(animal);
+                    }
                 }
+                
             }
-            else
-            { WagensTxt.Text = "error"; }
+            WagensTxt.Text = Train.wagons.Count.ToString();
         }
 
         private void ClearWagon_Click(object sender, EventArgs e)
         {
-            NewTrein.AantalWagens = 0;
-            WagensTxt.Text= "";
+            Train.wagons.Clear();
+            WagensTxt.Text = string.Empty;
         }
 
-        private void ClearButton_Click(object sender, EventArgs e)
+        private void ClearAnimalListButton_Click(object sender, EventArgs e)
         {
-            AnimalList.Clear();
-            AnimalListTxt.Text = "";
-           
+            animals.Clear();
+            AnimalListTxt.Text = string.Empty;
         }
+
+
+        private void FillUIElement()
+        {
+            FillDietComboBox();
+            FillSizeComboBox();
+        }
+
+        private void FillSizeComboBox()
+        {
+            CustomEnum.SizePoints[] sizePointsArray = (CustomEnum.SizePoints[])Enum.GetValues(typeof(CustomEnum.SizePoints));
+            for (int i = 0; i < sizePointsArray.Length; i++)
+            {
+                comboBoxSize.Items.Add(sizePointsArray[i]);
+            }
+        }
+
+        private void FillDietComboBox()
+        {
+            CustomEnum.Diet[] dietArray = (CustomEnum.Diet[])Enum.GetValues(typeof(CustomEnum.Diet));
+            for (int i = 0; i < dietArray.Length; i++)
+            {
+                comboBoxDiet.Items.Add(dietArray[i]);
+            }
+        }
+
+        
+
     }
 }

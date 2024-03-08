@@ -3,31 +3,19 @@ namespace CircusTrein.Classes
 {
    public class Animal
     {
-        private string size;
-        public int Punten 
-        {
-            get
-            {
-                if (size == "Smoll") { return 1; }
-                if (size == "Medium") { return 3; }
-                if (size == "Large") { return 5; }
-                return 0;
-            }
-        }
-        public string Diet {  get; set; }
+        public CustomEnum.SizePoints SizePoints { get; private set; }
+        public CustomEnum.Diet Diet { get; private set; }
+        public int Points;
         
-        public Animal(string size, string diet)
+        public Animal(CustomEnum.SizePoints size, CustomEnum.Diet diet)
         {
-            this.size = size;
+            SizePoints = size;
             Diet = diet;
+            Points = (int)SizePoints;
+
         }
 
-        bool AreCompatible(Animal animal)
-        {
-            if (Diet == "Carnievoor" && Punten >= animal.Punten) { return false; }
-            if (animal.Diet == "Carnievoor" && animal.Punten >= Punten) { return false; }
-            return true;
-        }
+        
 
 
     }
